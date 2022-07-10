@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CheckBoxPreference
+        app:key="message"
+        app:title="소리 알림"
+        app:summary="소리로 알림을 받으려면 체크하세요"
+        app:icon="@drawable/ic_sound"/>
+
+    <SwitchPreferenceCompat
+        app:key="vibration"
+        app:title="진동 알림"
+        app:summary="메세지가 왔을때 진동 울림으로 알림을 받으려면 켜세요."/>
+    <EditTextPreference
+        app:key="nickname"
+        app:title="닉네임을 만드세요"
+        app:summary="닉네임을 설정하세요"/>
+    <ListPreference
+        app:key="sound"
+        app:title="알림음"
+        app:summary="알림음을 설정하세요"
+        app:entries="@array/sounds"
+        app:entryValues="@array/sounds"/>
+    <MultiSelectListPreference
+        app:key="favorite"
+        app:title="Favorite"
+        app:summary="좋아하는 항목을 선택하세요"
+        app:entries="@array/favors"
+        app:entryValues="@array/favors"/>
+
+    <PreferenceCategory app:title="디버깅">
+        <SwitchPreferenceCompat
+            app:key="debugging"
+            app:title="USB 디버깅"
+            app:summary="USB가 연결된 경우 디버그 모드 사용"
+            app:defaultValue="true"/>
+        <CheckBoxPreference
+            app:key="USB_app"
+            app:title="usb로 설치된 앱 확인"
+            app:summary="usb 디버그를 통해 설치된 앱 목록을 확인합니다."
+            app:dependency="debugging"/>
+    </PreferenceCategory>
+
+<!--  계층구조 PreferenceFragment  -->
+    <Preference
+        app:fragment="com.lux.ex098preferencefragment.SettingNetworkFragment"
+        app:key="network"
+        app:title="네트워크"
+        app:summary="네트워크를 설정합니다."/>
+<!--  새로운 액티비티 실행하는 설정화면  -->
+    <PreferenceScreen
+        app:title="이미지보기">
+
+        <intent android:targetPackage="com.lux.ex098preferencefragment"
+            android:targetClass="com.lux.ex098preferencefragment.ImageActivity"/>
+    </PreferenceScreen>
+</PreferenceScreen>
